@@ -1,0 +1,24 @@
+{ 
+	"data":[{
+	"photo":"img/demo1.jpg",
+	"id":"7",
+	"category":"Babycare",
+	"title":"Leverage Big Data to understand consumer touchpoints in E-com",
+	"detail":"By going through the shopping journey in the E-commerce platform, figuring out how to reach consumers at the moments that most influence their decisions in each stage."
+
+},{
+	"photo":"img/demo1.jpg",
+	"id":"1",
+	"category":"Babycare",
+	"title":"Consumer Behaviors in Big Data",
+	"detail":"By going through the shopping journey in the E-commerce platform, figuring out how to reach consumers at the moments that most influence their decisions in each stage"
+
+},{
+	"photo":"img/demo1.jpg",
+	"id":"2",
+	"category":"Babycare",
+	"title":"618 Festival Ad Performance Analysis",
+	"detail":"JD allocated all best resources to festival promotions; Hence it's a better strategy to cooperate with JD to get promotion resources and to know which is effective resource."
+
+}]
+}

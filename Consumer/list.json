@@ -1,0 +1,69 @@
+{"list_data":{
+	"ATTITUDES":[
+		{
+			"title":"Opportunities on New Middle Class",
+			"id":"7"
+		},
+		{
+			"title":"Consumer Behaviors in Big Data",
+			"id":"1"
+		},
+		{
+			"title":"618 Festival Ad Performance Analysis",
+			"id":"2"
+		},
+		{
+			"title":"Media touchpoint for Napkin Consumers",
+			"id":"3"
+		}
+	],
+	"BABYCARE":[
+		{
+			"title":"--",
+			"id":"4"
+		},
+		{
+			"title":"--",
+			"id":"5"
+		},
+		{
+			"title":"--",
+			"id":"6"
+		}
+	],
+	"FEMCARE":[
+		{
+			"title":"--",
+			"id":"7"
+		},
+		{
+			"title":"--",
+			"id":"8"
+		},
+		{
+			"title":"--",
+			"id":"9"
+		}
+	],
+	"LAUNDRY":[
+		{
+			"title":"--",
+			"id":"9"
+		},
+		{
+			"title":"--",
+			"id":"10"
+		}
+	],
+	"ORALCARE":[
+		{
+			"title":"--",
+			"id":"11"
+		},
+		{
+			"title":"--",
+			"id":"12"
+		}
+	]
+
+}}

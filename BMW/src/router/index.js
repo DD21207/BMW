@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/views/Home'
-import HelloWorld from '@/components/HelloWorld'
+import Market from '@/components/Market'
 import Media from '@/components/Media'
 
 
@@ -21,6 +21,10 @@ export default new Router({
     	path:'Media',
     	name:'Media',
     	component:Media
+    },{
+        path:'Market',
+      name:'Market',
+      component:Market
     }]
     }
   ]

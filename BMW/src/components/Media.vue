@@ -86,9 +86,61 @@
 			</div>
 		</div>
 		<div id="table_div">
-			
+			<transition name="slide-fade" >
+				<div id="table_box" v-if="show">
+					<div class="table_box_title">
+						Deal Detail
+					</div>
+					<div class="table_box_box">
+						<div class="table_box_box_item1">
+							<p>Status: {{item_box.status}}</p>
+							<p>Principal: {{item_box.principal}}</p>
+							<p>Media: {{item_box.media_attribute}}</p>
+							<p>Media List: {{item_box.media_list}}</p>
+							<p>Effected on: {{item_box.effected_on}}</p>
+							<p>Expired on: {{item_box.expired_on}}</p>
+							<p>Price Unit: {{Price_Unit}}</p>
+							<p>Rate card Inflation: {{item_box.ratecard_inflation | formatPercent}}</p>
+							<p>Forecast Scenario 1: {{item_box.scenario_1}} ({{item_box.scenarioPercent1 | formatPercent}})</p>
+							<p>Forecast Scenario 2: {{item_box.scenario_2}} ({{item_box.scenarioPercent2 | formatPercent}})</p>
+							<p>Forecast Scenario 3: {{item_box.scenario_3}} ({{item_box.scenarioPercent3 | formatPercent}})</p>
+						</div>
+						<div class="table_box_box_item2">	
+							<div style="width:500px;margin-right:50px;margin-bottom:20px;">
+								<p>Type: {{item_box.deal_type}}</p>
+								<p>Commitment: {{item_box.commitment}}</p>
+								<p>Comment:</p>
+								<div class="comment">
+									<p>{{item_box.discount_off | formatPercent}} discount off</p>
+									<p>{{item_box.deal_comment}}</p>
+								</div>
+								<p>Pay Factor: {{item_box.payFactor | formatPercent}}</p>
+								<p>Comment:</p>
+								<div class="comment">
+									<p>{{item_box.pay_comment}}</p>
+								</div>
+							</div>
+      						<div style="width:500px;">
+      							<p>Compensation:</p>
+								<div class="comment">
+									<p>{{item_box.compensation}}</p>
+								</div>
+								<p>Bonus:</p>
+								<div class="comment">
+									<p>Total bonus rate card/net cost: {{item_box.bonusNet | formatPercent}}</p>
+									<p>Total Rate card/Paid Rate card: {{item_box.total_paid_ratecard  | formatPercent}}</p>
+								</div>
+								<p>Remark:</p>
+								<div class="comment">
+									<p>{{item_box.remark}}</p>
+								</div>
+      						</div> 
+						</div>
+					</div>
+				</div>
+			</transition>
+		<!-- 	<div style="color:white">sdsdsds</div> -->
 		</div>
-	
 	</div>
 </template>
 
@@ -97,6 +149,7 @@ export default {
   name: 'Media',
   data () {
     return {
+    	show: false,
     	grade:[{
 	          label: 'Central'
 	    },{
@@ -130,12 +183,49 @@ export default {
      		subMedia:null,
      		format:null,
      		dealDate:null
-     	}
-       
-       
+     	},
+     	item_box:{
+	        "status": "",
+	        "principal": "",
+	        "media_attribute": "",
+	        "media_list": "",
+	        "effected_on": "",
+	        "expired_on": "",
+	        "ratecard_inflation": "",
+	        "scenario_1": "",
+	        "scenario_2": "",
+	        "scenario_3": "",
+	        "scenario_4": "",
+	        "scenarioPercent1": "",
+	        "scenarioPercent2": "",
+	        "scenarioPercent3": "",
+	        "scenarioPercent4": "",
+	        "deal_type": "",
+	        "commitment": "",
+	        "discount_off": "",
+	        "deal_comment": "",
+	        "payFactor": "",
+	        "pay_comment": "",
+	        "compensation": "",
+	        "bonusNet": "",
+	        "total_paid_ratecard": "",
+	        "remark":"",
+	        
+    	},
+    	"Price_Unit":"RMB"
     }
   },
+  filters: {
+        formatPercent:function(value){
+        	return value*100 + '%'
+        }
+  },
   mounted:function(){
+  	// $("#Audit_ul").hover(function(){
+   //    $("#Audit").css('background','#262626')
+   //  })
+      $("#Audit").css('background','#4d4d4d')
+   
   	 this.$nextTick(function() {
   	 	this.onloadList()	   
     })
@@ -151,7 +241,22 @@ export default {
   		})
   	},
   	Confirm(){
-
+  		this.show =false
+  		this.$http({
+  			method:'post',
+            url:'http://10.143.102.243:8080/bmwos/deal/digital/get_detail.do',
+            data:this.selecteds
+  		}).then(response => {
+  		
+  			if(response.data.status == 0){
+  				this.item_box =response.data.data 
+  				this.show = true
+  			}else{
+  				alert("选择有误，请重新选择！")
+  			}
+  			
+  		})
+  		
   	},
   	changeList(){
   		this.onloadList()
@@ -161,103 +266,8 @@ export default {
 </script>
 
 <style>
-
-#Media{
-	width: 100%;
-	height:100%;
-	min-height: 869px;
-	background:url(../assets/DT.jpg);
-	display: -webkit-flex; /* Safari */
-  	display: flex;
-
-}
-.router-link-exact-active {
-    background: #262626 !important;
-  }
-
-#select_div{
-	background: #4d4d4d;
-	width: 200px;
-	margin-top: 20px;
-	height: auto;
-	margin-bottom: 40px;
-}
-
-.select_box{
-	width: 100%;
-	height: 70%;margin-top: 20px;
-	margin-bottom: 40px;
-	padding: 20px
-}
-
-.select_title{
-	width: 100%;
-	height: auto;
-	padding-bottom: 10px;
-	font-size: 18px;
-	border-bottom: 1px solid white;
-	color: white;
-}
-
-.set_main{
-	width: 100%;
-  padding-bottom: 10px;
-  border-bottom: 1px solid white;
-}
-
-.set_main_box{
-	margin-top: 15px;
-  margin-bottom: 15px;
-  width: 100%;
-}
-
-.set_main_box>p {
-  text-align: left;
-  color: white;
-  width: 100%;
-  margin: 5px 0;
-  font-size: 14px;
-}
-
-
-
-#select1,#select2,#select3,#select4,#select5,#select6,#select7{
-    border-radius: 5px;
-    padding: 0 10px;
-    color:#4d4d4d;
-    height: 25px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    cursor: pointer;
-    width: 160px;
-    font-size: 10px;
-    -webkit-transform: scale(.98);
-    margin-left: -5px;
-}
-#table_div{
-	flex: 1;	
-}
-
-.set-footer {
-  width: 160px;
-  padding-top: 20px;
-}
-
-.set-footer>p {
-	width: 160px;
-  border: 1px solid #2fd0b5;
-  border-radius: 5px;
-  cursor: pointer;
-  padding: 2px 14px;
-  color: white;
-
-}
+@import '../assets/css/media.css';
 
 </style>
+
+

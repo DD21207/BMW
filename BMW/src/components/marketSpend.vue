@@ -180,11 +180,17 @@ export default {
 	background: url(../assets/img/B2.png) top right!important;
 	font-size: 13px;
 	width: 200px;
+	height: 35px;
+	line-height: 35px;
+	color: black;
 }
 
 .marketSpend_box_table_box .el-tabs__item.is-active{
 	background: url(../assets/img/B1.png) top right!important;
 	font-size: 13px;
 	width: 200px;
+	height: 35px;
+	line-height: 35px;
+	color: black;
 }
 </style>

@@ -3,7 +3,7 @@
 		<div class="Market_main">
 			<div class="market_select_box">
 				<span>Brand:</span>
-				<el-select v-model="valueBrand"  collapse-tags multiple placeholder="请选择" id="brand">
+				<el-select v-model="selectValue.valueBrand"  collapse-tags multiple placeholder="请选择" id="brand">
 				    <el-option
 				      v-for="item in brandList"
 				      :key="item.label"
@@ -12,7 +12,7 @@
 				    </el-option>
 				  </el-select>
 				  <span>Year:</span>
-				<el-select v-model="valueYear"  collapse-tags  placeholder="请选择" id="year">
+				<el-select v-model="selectValue.valueYear"  collapse-tags  placeholder="请选择" id="year">
 				    <el-option
 				      v-for="item in yearList"
 				      :key="item.label"
@@ -21,7 +21,7 @@
 				    </el-option>
 				  </el-select>
 				 <span></span>
-				<el-select v-model="monthStart"  collapse-tags  placeholder="请选择" id="monthStart">
+				<el-select v-model="selectValue.monthStart"  collapse-tags  placeholder="请选择" id="monthStart">
 				    <el-option
 				      v-for="item in monthList"
 				      :key="item.label"
@@ -30,7 +30,7 @@
 				    </el-option>
 				  </el-select>
 				  <span>to</span>
-				<el-select v-model="monthEnd"  collapse-tags  placeholder="请选择" id="monthEnd">
+				<el-select v-model="selectValue.monthEnd"  collapse-tags  placeholder="请选择" id="monthEnd">
 				    <el-option
 				      v-for="item in monthList"
 				      :key="item.label"
@@ -42,16 +42,16 @@
 			<el-tabs type="card">
 				  <el-tab-pane>
 					  <span slot="label">Competitive Spend</span>
-					  <competitive-Spend></competitive-Spend>
+					  <competitive-Spend :selected="selectValue"></competitive-Spend>
 				  </el-tab-pane>
 				  <el-tab-pane>
                       <span slot="label">Market Spend</span>
-				  	  <market-Spend></market-Spend>
+				  	  <market-Spend :selected="selectValue"></market-Spend>
 				  </el-tab-pane>
-				  <el-tab-pane label="角色管理">
+				  <el-tab-pane >
 						<span slot="label">	Media Cost Inflation</span>
-				  		<media-Cost></media-Cost>
-				</el-tab-pane>
+				  		<media-Cost :selected="selectValue"></media-Cost>
+				</el-tab-pane >
 			
 			</el-tabs>
 		</div>
@@ -74,8 +74,6 @@ export default {
 			clientHeight:"",
 			brandList:[{
 				label:'BMW'
-			},{
-				label:'BENZ'
 			}],
 			monthList:[
 			{
@@ -111,17 +109,16 @@ export default {
 			],
 			yearList:[
 			{
-				label:'2016'
-			},
-			{
-				label:'2017'
-			},{
 				label:'2018'
 			}],
-        	valueBrand: "",
-        	monthStart:"",
-        	monthEnd:"",
-        	valueYear:""
+			selectValue:{
+				valueBrand: ['BMW','Audi','Mercedes-Benz'],
+	        	monthStart:"",
+	        	monthEnd:"",
+	        	valueYear:"",
+	        	tableHeight:10
+			},
+			tableHeight:20
 		}
 	},
 	components: {
@@ -132,18 +129,37 @@ export default {
 	mounted:function(){
       		$("#Audit").css('background','#262626')
 
-		 	this.clientHeight = document.documentElement.clientHeight - 80 +'px';   
+		 	this.clientHeight = document.documentElement.clientHeight - 80 +'px';  
+
 		    const that = this;
 		    window.onresize = function temp() {
 		        that.clientHeight = document.documentElement.clientHeight - 80 +'px';
+		    	that.selectValue.tableHeight = $(".competitiveSpend_box_table_box").height();
+		    	
 		    };
 
 		    $("#Audit_ul>li:first").addClass('Audit_ul_actived');
 
-		    
+		    this.$nextTick(function() {
+		    	this.selectValue.tableHeight = $(".competitiveSpend_box_table_box").height();
+	  	 		this.marketOnload()	   
+	    	})
 	},
 	methods:{
-
+		marketOnload(){
+			this.$http({
+	  			method:'get',
+	            url:'http://10.143.102.243:8080/bmwos/monspending/on_load.do'
+	  		}).then(response => {
+	  			if(response.data.status == 0){
+	  				this.yearList = response.data.data.year
+	  				this.brandList = response.data.data.brand
+	  			}else{
+	  				alert("Error!")
+	  			}
+	  			
+	  		})
+		}
 	}
 }
 

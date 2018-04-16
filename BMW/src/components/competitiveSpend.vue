@@ -1,24 +1,19 @@
 <template>
 	<div id="competitiveSpend_box" :selected="selected">
 		<div class="competitiveSpend_box_header">
-			<p style="font-weight: bold;">Basic Information</p>
 			<div class="competitiveSpend_box_header_box">
 				<p>
 					Client: <span class="blueSpan">BMW</span> <span style="	margin: 0px 10px;">|</span> Country: <span class="blueSpan">China</span> <span style="	margin: 0px 10px;">|</span> Currency: <span class="blueSpan">RMB</span><span style="margin: 0px 10px;">|</span>
-					Brand: <span class="blueSpan">{{selectedData.valueBrand}}</span>
+					Brand: <span class="blueSpan">{{brand}}</span>
 				</p>
 				<p>
 					Dealers included? (Yes / No)：<span class="blueSpan">{{tableData.dealer}}</span>
 					<span style="	margin: 0px 10px;">|</span>
 					Type of Spend (Gross / Est.Net): <span class="blueSpan">Gross</span>
 				</p>
-				<p>Source: Nielsen(TV, Newspaper, Magazine, Radio),iResearch(Digital),CODC(Outdoor), Entgroup(Cinema);</p>
 			</div>
 		</div>
 		<div class="competitiveSpend_box_table_box">
-			<div class="competitiveSpend_box_table_header">
-				<p>Deal Detail</p>
-			</div>
 			<div class="competitiveSpend_box_table">
 				<el-table
 				    :data="tableData.table"
@@ -41,6 +36,7 @@ export default {
 	data(){
 		return {
 			selectedData:this.selected,
+			brand:this.selected.valueBrand.join('/'),
 			tableData:{
 				header:[{"name":""}],
 				dealer:"",
@@ -68,7 +64,7 @@ export default {
 			let end_date = this.selectedData.valueYear + this.selectedData.monthEnd
 			this.$http({
 	  			method:'post',
-	            url:'http://10.143.102.243:8080/bmwos/monspending/get_media_spend.do',
+	            url:'http://114.55.92.124:9090/bmwos/monspending/get_media_spend.do',
 	            data:{
 				  "start_date":start_date,
 				  "end_date":end_date,
@@ -84,7 +80,7 @@ export default {
 			
 		},
 		setHeight(){
-			this.tableHeight=this.selectedData.tableHeight -40
+			this.tableHeight=this.selectedData.tableHeight -15
 		}
 
 	},
@@ -110,9 +106,9 @@ export default {
 }
 
 .competitiveSpend_box_header{
-	height: 180px;
+	height: 80px;
 	width: 100%;
-
+	
 }
 
 .competitiveSpend_box_header>p{
@@ -122,21 +118,22 @@ export default {
 }
 
 .competitiveSpend_box_header_box{
-	width: 850px;
-	height: 125px;
-	border: 1px solid white;
-	padding: 5px;
+	width: 100%;
+	height: 80px;
+	border-top: 5px solid #6ADBD9;
+	border-bottom: 2px solid white;
+	padding: 10px 5px;
 }
 
 
 .competitiveSpend_box_header_box>p{
 	color: white;
-	margin-bottom: 15px;
+	margin-bottom: 5px;
 	margin-top: 5px;
 }
 
 .blueSpan{
-	color: #1C69D4;
+	color: #6ADBD9;
 	margin-left: 5px;
 	font-weight: bold;
 }
@@ -147,6 +144,7 @@ export default {
 	display: flex;
 	display: -webkit-flex; 
 	flex-direction:column;
+	margin-top: 20px;
 }
 
 .competitiveSpend_box_table_header{
@@ -175,7 +173,7 @@ export default {
 }
 
 .competitiveSpend_box_table .el-table th, .el-table tr{
-	background: rgba(121,121,121,0.9) !important;
+	background: rgba(121,121,121,1) !important;
 }
 
 
@@ -184,7 +182,7 @@ export default {
 }
 
 .competitiveSpend_box_table .el-table__body-wrapper{
-	background: rgba(121,121,121,0.9) !important;
+	background: rgba(121,121,121,1) !important;
 }
 .competitiveSpend_box_table .el-table__row{
 	color: white;

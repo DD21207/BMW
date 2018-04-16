@@ -1,7 +1,7 @@
 /*状态栏 actived*/
 #Audit_ul .router-link-exact-active{
 	background: #FFFFFF !important;
-	color: #1C69D4
+	color: #6ADBD9
 }
 .router-link-exact-active {
     background: #262626 !important;
@@ -113,7 +113,7 @@
     -ms-flex-pack: justify;
     justify-content: space-between;
     cursor: pointer;
-    width: 160px;
+    width: 210px;
     font-size: 10px;
     -webkit-transform: scale(.98);
     margin-left: -5px;

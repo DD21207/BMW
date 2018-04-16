@@ -128,7 +128,7 @@ export default {
 	},
 	mounted:function(){
       		$("#Audit").css('background','#262626')
-
+      		$("#Audit").siblings().css('background','#4d4d4d')
 		 	this.clientHeight = document.documentElement.clientHeight - 80 +'px';  
 
 		    const that = this;
@@ -149,7 +149,7 @@ export default {
 		marketOnload(){
 			this.$http({
 	  			method:'get',
-	            url:'http://10.143.102.243:8080/bmwos/monspending/on_load.do'
+	            url:'http://114.55.92.124:9090/bmwos/monspending/on_load.do'
 	  		}).then(response => {
 	  			if(response.data.status == 0){
 	  				this.yearList = response.data.data.year

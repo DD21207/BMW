@@ -134,6 +134,37 @@ body {
 
 /*下拉菜单*/
 
+#Deal_ul {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+#Deal_ul>li {
+  background: transparent;
+}
+
+#Deal_ul>li>a {
+  background: transparent;
+  color: white;
+  font-size: 15px;
+}
+
+#Deal_ul>li>a:hover {
+  background: white;
+  color: #6ADBD9;
+}
+#Deal_ul {
+  width: 180px;
+}
+
+
+.Deal_ul_actived>a{
+  background: #FFFFFF !important;
+  color: #6ADBD9 !important;
+}
+
+
+
+
 #Audit_ul {
   background: rgba(0, 0, 0, 0.5);
 }
@@ -150,7 +181,7 @@ body {
 
 #Audit_ul>li>a:hover {
   background: white;
-  color: #0653B6;
+  color: #6ADBD9;
 }
 
 #Audit_ul_offline {
@@ -172,7 +203,7 @@ body {
 
 #Audit_ul_offline>li>a:hover {
   background: white;
-  color: #0653B6;
+  color: #6ADBD9;
 }
 
 #Audit_ul_online {
@@ -194,7 +225,7 @@ body {
 
 #Audit_ul_online>li>a:hover {
   background: white;
-  color: #0653B6;
+  color: #6ADBD9;
 }
 
 #ull4 {
@@ -213,7 +244,7 @@ body {
 
 #ull4>li>a:hover {
   background: white;
-  color: #0653B6;
+  color: #6ADBD9;
 }
 
 .remark {
@@ -244,6 +275,6 @@ body {
 
 .Audit_ul_actived>a{
 	background: #FFFFFF !important;
-  color: #1C69D4 !important;
+  color: #6ADBD9 !important;
 }
 

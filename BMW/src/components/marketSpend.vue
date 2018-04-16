@@ -1,7 +1,6 @@
 <template>
 	<div  :selected="selected" id="marketSpend_box">
 		<div class="marketSpend_box_header">
-			<p style="font-weight: bold;">Basic Information</p>
 			<div class="marketSpend_box_header_box">
 				<p>
 					Client: <span class="blueSpan">BMW</span> <span style="	margin: 0px 10px;">|</span> Country: <span class="blueSpan">China</span> <span style="	margin: 0px 10px;">|</span> Currency: <span class="blueSpan">RMB</span>
@@ -11,7 +10,6 @@
 					<span style="	margin: 0px 10px;">|</span>
 					Type of Spend (Gross / Est.Net): <span class="blueSpan">Gross</span>
 				</p>
-				<p>Source: Nielsen(TV, Newspaper, Magazine, Radio),iResearch(Digital),CODC(Outdoor), Entgroup(Cinema);</p>
 			</div>
 		</div>
 		<div class="marketSpend_box_table_box">
@@ -59,7 +57,7 @@ export default {
 			
 		},
 		setHeight(){
-			this.tableHeight=this.selectedData.tableHeight -40
+			this.tableHeight=this.selectedData.tableHeight -15
 		}
 
 	},
@@ -87,7 +85,7 @@ export default {
 }
 
 .marketSpend_box_header{
-	height: 180px;
+	height: 80px;
 	width: 100%;
 
 }
@@ -99,21 +97,22 @@ export default {
 }
 
 .marketSpend_box_header_box{
-	width: 850px;
-	height: 125px;
-	border: 1px solid white;
-	padding: 5px;
+	width: 100%;
+	height: 80px;
+	border-top: 5px solid #6ADBD9;
+	border-bottom: 2px solid white;
+	padding: 10px 5px;
 }
 
 
 .marketSpend_box_header_box>p{
 	color: white;
-	margin-bottom: 15px;
+	margin-bottom: 5px;
 	margin-top: 5px;
 }
 
 .blueSpan{
-	color: #1C69D4;
+	color: #6ADBD9;
 	margin-left: 5px;
 	font-weight: bold;
 }
@@ -124,6 +123,7 @@ export default {
 	display: flex;
 	display: -webkit-flex; 
 	flex-direction:column;
+	margin-top: 20px;
 }
 
 .marketSpend_box_table_header{

@@ -1,12 +1,12 @@
 <template>
   	<div>
-  		sdsdsd
+  		
   	</div>
 </template>
 
 <script>
 export default {
-  name:'HelloWorld',
+  name:'PrintSummary',
   data(){
     return {
 
@@ -22,5 +22,5 @@ export default {
 </script>
 
 <style>
-@import '../assets/css/market.css';
+
 </style>

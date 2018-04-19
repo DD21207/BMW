@@ -23,6 +23,7 @@ export default {
 	data(){
 		return {
 			select:this.selected,
+	     	yhToken:sessionStorage.getItem("token"),
 			header:[{
 				name:"",
 				value:""
@@ -70,7 +71,8 @@ export default {
 	  			method:'post',
 	            url:url1,
 	            data:{
-	            	"status":this.select
+	            	"status":this.select,
+	            	"yhToken":this.yhToken
 	            }
 	  		}).then(response => {
 	  			this.tableData3 = response.data.data.table

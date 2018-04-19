@@ -51,7 +51,7 @@
 							    </el-option>
 							</el-select>
 						</div><div class="set_main_box">
-							<p>Publisher Type</p>
+							<p>Media Category</p>
 							<el-select v-model="selecteds.publisherType" filterable clearable v-on:change="changeList()" placeholder="Please select" id="select5">
 							    <el-option
 							      v-for="item in Options_List.publisherType"
@@ -125,6 +125,9 @@
 							<!-- 图片 -->
 							<img src="@/assets/img/OOH.png" alt="" height="100%"> 
 							</a>
+							<p>
+								Remark: New media include special content co-op.
+							</p>
 						</div>
 						
 					</div>
@@ -164,32 +167,34 @@
 					</div>
 					<div class="table_box_item1">
 						<div class="table_box_item1_item">
-							<p>Media List: <span>{{item_box.media_list}}</span></p>
+							<!-- <p>Media List: <span>{{item_box.media_list}}</span></p> -->
 							<p>Media: <span>{{item_box.media_attribute}}</span></p>
+							<p>Deal Type: <span>{{item_box.deal_type}}</span></p>
 							<p>Effected on: <span>{{item_box.effected_on}}</span></p>
 							<p>Expired on: <span>{{item_box.expired_on}}</span></p>
 							<p>Principal: <span>{{item_box.principal}}</span></p>
 						</div>
 						<div class="table_box_item1_item" style="margin-left:30px;">
-							<p>Type: <span>{{item_box.deal_type}}</span></p>
-							<p>Commitment(RMB): <span>{{item_box.commitment |formatNull}}</span></p>
-							<p>Rate card Inflation(vs YA): <span>{{item_box.ratecard_inflation_vsya | formatPercent}}</span></p>
-							<p>Unit Price Inflation(vs YA): <span>{{item_box.unit_price_inflation_vsya | formatPercent}}</span></p>
+							
+							<p>Net Cost (excl. production cost) (RMB): <span>{{item_box.commitment |formatNull}}</span></p>
+							<p>Discount Off: <span>{{item_box.discount_off | formatPercent}}</span> </p>
+
+							<!-- <p>Rate card Inflation(vs YA): <span>{{item_box.ratecard_inflation_vsya | formatPercent}}</span></p> -->
+							<!-- <p>Unit Price Inflation(vs YA): <span>{{item_box.unit_price_inflation_vsya | formatPercent}}</span></p> -->
 							<p>Status: <span>{{item_box.status}}</span></p>
-						</div>1`
-						<div class="table_box_item1_item" style="margin-left:30px;">
+						</div>
+						<!-- <div class="table_box_item1_item" style="margin-left:30px;">
 							<p>Forecast Scenario 1: {{item_box.scenario_1 | formatNumber}} (<span>{{item_box.scenarioPercent1 | formatPercent}}</span>)</p>
 							<p>Forecast Scenario 2: {{item_box.scenario_2 | formatNumber}} (<span>{{item_box.scenarioPercent2 | formatPercent}}</span>)</p>
 							<p>Forecast Scenario 3: {{item_box.scenario_3 | formatNumber}} (<span>{{item_box.scenarioPercent3 | formatPercent}}</span>)</p>
 							<p>Forecast Scenario 4: {{item_box.scenario_4 | formatNumber}} (<span>{{item_box.scenarioPercent4 | formatPercent}}</span>)</p>
-						</div>
+						</div> -->
 					</div>
 					<div class="table_box_item2">
 						<div class="table_box_item2_item_box">
 							<div>
 								<p>Deal Comment:</p>
 								<div class="table_box_item2_item_box_detail">
-									<p>{{item_box.discount_off | formatPercent}} discount off</p>
 									<p>{{item_box.deal_comment}}</p>
 								</div>
 							</div>
@@ -227,8 +232,9 @@
 							</div>
 						</div>
 						<div class="table_box_item2_a_box">
-							<span class="glyphicon glyphicon-play"></span><a href=""> Approve</a>
-							<span class="glyphicon glyphicon-play"></span><a href=""> Contract Full Edition</a>
+							<span class="glyphicon glyphicon-play"></span><a href="javascript:;;"> Approve</a>
+							<span class="glyphicon glyphicon-play"></span><a href="javascript:;;"> Reject</a>
+							<span class="glyphicon glyphicon-play"></span><a href="javascript:;;"> Contract Full Edition</a>
 						</div>
 					</div>
 					<div class="table_box_highlight">
@@ -288,7 +294,7 @@ export default {
 	    	},
 	    	// 下拉选项修改3 JJ
 	     	selecteds:{
-	     		grade:"Central",
+	     		grade:"BMW Central",
 	     		year:null,
 	     		province:null,
 	     		cityRegion:null,
@@ -296,7 +302,8 @@ export default {
 	     		supplierCh:null,
 	     		formatCh:null,
 	     		address:null,
-	     		dealDate:null
+	     		dealDate:null,
+	     		yhToken:sessionStorage.getItem("token")
 	     	},
 	     	tags:[],
 	     	// detail修改 JJ
@@ -455,7 +462,7 @@ export default {
   	},
   	checkDetail(data){
   		this.selecteds = data;
-  		// console.log(this.selecteds)
+  		this.selecteds.yhToken=sessionStorage.getItem("token");
   		this.list_show = false;
   		this.detail_show = false;
   		this.detail_close = false;

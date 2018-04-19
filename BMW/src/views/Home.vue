@@ -11,8 +11,8 @@
                 <router-link  to="/dealViewer">Home</router-link>
                  <span>|</span>
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="a">
-					Welcome,{{username}}
-					<span id="admin"></span>
+					Welcome,
+					<span id="admin">{{username}}</span>
 				</a>
             </div>
         </div>
@@ -70,110 +70,9 @@
                     </a>
                 </li>
                 <li class="dropdown li" id="Audit">
-                    <a href="javascript:void(0);" style="padding:3px 0 0 5px;line-height: 1.4" >
-                        Audit Star<br>Report
-                    </a>
-                    <!-- <ul class="dropdown-menu menu1" id="Audit_ul">
-                        <li class="li">
-                            <a href="javascript:void(0);" style="padding:3px 0 0 5px;">
-                                <span class="glyphicon glyphicon-play"></span> Offline Reports
-                            </a>
-                            <ul class="dropdown-menu" id="Audit_ul_offline">
-                                <li class="li">
-                                    <router-link to="/Market" style="padding:3px 0 0 5px;line-height: 1.4" >
-                                        <span class="glyphicon glyphicon-play"></span> 1. Market Report
-                                    </router-link>
-                                </li>
-                                <li class="divider" style="margin: 3px;"></li>
-                                <li class="li">
-                                   <router-link to="/" style="padding:3px 0 0 5px;line-height: 1.4" >
-                                         <span class="glyphicon glyphicon-play"></span> 2. Online Budget Summary
-                                    </router-link>
-                                </li>
-                                <li class="divider" style="margin: 3px;"></li>
-                                <li class="li">
-                                   <router-link to="/" style="padding:3px 0 0 5px;line-height: 1.4" >
-                                        <span class="glyphicon glyphicon-play"></span> 3. TV Summary
-                                    </router-link>
-                                </li>
-                                <li class="divider" style="margin: 3px;"></li>
-                                <li class="li">
-                                   <router-link to="/" style="padding:3px 0 0 5px;line-height: 1.4" >
-                                         <span class="glyphicon glyphicon-play"></span> 4. Online Data Request
-                                    </router-link>
-                                </li>
-                                <li class="divider" style="margin: 3px;"></li>
-                                <li class="li">
-                                   <router-link to="/" style="padding:3px 0 0 5px;line-height: 1.4" >
-                                         <span class="glyphicon glyphicon-play"></span> 5. Print Summary
-                                    </router-link>
-                                </li>
-                                <li class="divider" style="margin: 3px;"></li>
-                                <li class="li">
-                                   <router-link to="/" style="padding:3px 0 0 5px;line-height: 1.4" >
-                                        <span class="glyphicon glyphicon-play"></span> 6. Other Media Summary
-                                    </router-link>
-                                </li>
-                                <li class="divider" style="margin: 3px;"></li>
-                                <li class="li">
-                                   <router-link to="/" style="padding:3px 0 0 5px;line-height: 1.4" >
-                                        <span class="glyphicon glyphicon-play"></span> 7. Cinema Summary
-                                    </router-link>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="divider" style="margin: 3px;"></li>
-                        <li class="li">
-                            <a href="javascript:void(0);" style="padding:3px 0 0 5px;">
-                                <span class="glyphicon glyphicon-play"></span> Online Reports
-                            </a>
-                            <ul class="dropdown-menu" id="Audit_ul_online">
-                                <li class="li">
-                                    <router-link to="/" style="padding:3px 0 0 5px;line-height: 1.4" >
-                                        <span class="glyphicon glyphicon-play"></span> 1. Market Report
-                                    </router-link>
-                                </li>
-                                <li class="divider" style="margin: 3px;"></li>
-                                <li class="li">
-                                   <router-link to="/" style="padding:3px 0 0 5px;line-height: 1.4" >
-                                         <span class="glyphicon glyphicon-play"></span> 2. Online Budget Summary
-                                    </router-link>
-                                </li>
-                                <li class="divider" style="margin: 3px;"></li>
-                                <li class="li">
-                                   <router-link to="/" style="padding:3px 0 0 5px;line-height: 1.4" >
-                                        <span class="glyphicon glyphicon-play"></span> 3. TV Summary
-                                    </router-link>
-                                </li>
-                                <li class="divider" style="margin: 3px;"></li>
-                                <li class="li">
-                                   <router-link to="/" style="padding:3px 0 0 5px;line-height: 1.4" >
-                                         <span class="glyphicon glyphicon-play"></span> 4. Online Data Request
-                                    </router-link>
-                                </li>
-                                <li class="divider" style="margin: 3px;"></li>
-                                <li class="li">
-                                   <router-link to="/" style="padding:3px 0 0 5px;line-height: 1.4" >
-                                         <span class="glyphicon glyphicon-play"></span> 5. Print Summary
-                                    </router-link>
-                                </li>
-                                <li class="divider" style="margin: 3px;"></li>
-                                <li class="li">
-                                   <router-link to="/" style="padding:3px 0 0 5px;line-height: 1.4" >
-                                        <span class="glyphicon glyphicon-play"></span> 6. Other Media Summary
-                                    </router-link>
-                                </li>
-                                <li class="divider" style="margin: 3px;"></li>
-                                <li class="li">
-                                   <router-link to="/" style="padding:3px 0 0 5px;line-height: 1.4" >
-                                        <span class="glyphicon glyphicon-play"></span> 7. Cinema Summary
-                                    </router-link>
-                                </li>
-                            </ul>
-                        </li>
-                        
-                    </ul> -->
-                    
+                     <router-link to="/ASReport" style="padding:3px 0 0 5px;line-height: 1.4" >
+                       Audit Star<br>Report
+                    </router-link>
                 </li>
                 <li class="dropdown li"  >
                     <a href="javascript:void(0);" style="padding:3px 0 0 5px;line-height: 1.4" >
@@ -196,6 +95,9 @@
 </template>
 
 <script>
+import Bus from '@/bus/bus.js'
+
+
 export default {
   name: 'Home',
   data () {
@@ -251,21 +153,52 @@ export default {
       $("#Audit_ul_online").hide()
        $("#Audit_ul>li:eq(2)").removeClass('Audit_ul_actived')
      })
-    this.$nextTick(function() {
-      this.username = this.getQueryString('name')
-    })
    
   },
   methods:{
-    getQueryString(name) {
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)",'i'); // 匹配目标参数
-        var result = window.location.search.substr(1).match(reg); // 对querystring匹配目标参数
-        if (result != null) {
-          return decodeURIComponent(result[2]);
-        } else {
-          return null;
+    // getQueryString(name) {
+    //     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)",'i'); // 匹配目标参数
+    //     var result = window.location.search.substr(1).match(reg); // 对querystring匹配目标参数
+    //     if (result != null) {
+    //       return decodeURIComponent(result[2]);
+    //     } else {
+    //       return null;
+    //     }
+    // },
+    getCookie(name){
+        name = name + "="
+        var start = document.cookie.indexOf(name),
+            value = null;
+        if(start>-1){
+            var end = document.cookie.indexOf(";",start);
+            if(end == -1){
+                end = document.cookie.length;
+            }
+            value = document.cookie.substring(start+name.length,end);
         }
+        return value;
     }
+  },
+  created(){
+      // let token ="123";
+      // this.$store.commit('setToken',token);
+      let token = this.getCookie('yh_login_token');
+
+      this.$http({
+        method:'post',
+        url:'http://114.55.92.124:9090/bmwos/user/get_user_info.do?yhToken='+token,
+      }).then(response => {
+          if(response.data.status == 0){
+              this.$store.commit('setToken',token);
+              this.username = response.data.data.userid;
+          }else if(response.data.status == 10){
+              alert(response.data.msg);
+                // this.$store.commit('setToken',token);
+              window.location.href= "https://www.starcompass.net/BMW/login.html"
+          }
+      })
+
+    
   }
 
 }
